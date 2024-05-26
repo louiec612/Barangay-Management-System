@@ -1,0 +1,13 @@
+.row{
+    padding: 10px 40px 10px 40px;
+}
+
+#img{
+    display:flex;
+    align-items: center;
+    width:100px;
+    height:100px;
+    margin:auto;
+    margin-bottom: 20px;
+}
+

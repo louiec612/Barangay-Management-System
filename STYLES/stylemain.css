@@ -1,0 +1,246 @@
+@import url('https://fonts.cdnfonts.com/css/general-sans');
+*{
+    font-family: 'General Sans', sans-serif;   
+}
+
+body{
+    display: flex;
+    overflow: hidden;
+}
+
+.main .menu{
+    color:rgb(197, 197, 197);
+    font-size: 13px;
+}
+
+.sidebar{
+    position: sticky;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 230px;
+    min-height: 100vh;
+    padding: 0 1rem;
+    background:#fff;
+    overflow:hidden;
+}
+
+.logo{
+    height:75px;
+    width:75px;
+    margin-top:20px;
+    margin-left:50px;
+    background-image: url('/IMAGES/anunas_logo.jpg');
+    background-size: contain;
+    border-radius: 100%;
+}
+
+.gap{
+    height:50px;
+}
+.gap2{
+    height:500px;
+}
+
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
+
+.main{
+    height: 88%;
+    position:relative;
+    list-style: none;
+    padding:0;
+}
+
+.main .btns {
+    color: black;
+    font-size: 1rem;
+    display: flex;
+    padding: 10px;
+    gap: 1.5rem;
+    margin-top: 15px;
+    border-radius: 15px;
+}
+
+
+.main .btns:hover{
+    background-color: #ff6961;
+    color:white;
+    box-shadow: 2px 2px 8px 0 rgba(202, 63, 63, 0.171), 0 6px 20px 0 rgba(255, 0, 0, 0.226);
+}
+
+.main .btns:hover > img{
+    filter:invert(1);
+}
+
+.dropdown{
+    border-radius: 15px;    
+}
+
+.dropdown_menu{
+    display:none;
+    list-style: none;
+}
+
+.dropdown_item{
+    margin: 10px;
+}
+
+.dropdown_menu.active{
+    display:block;
+}
+
+.dropdown_item a{
+    color:black;
+    font-size: 13px;
+    padding: 4px;
+    border-radius: 10px;
+}
+
+.dropdown_item a:hover{
+    background-color: #ff6961;
+    color:white;
+    box-shadow: 2px 2px 8px 0 rgba(202, 63, 63, 0.171), 0 6px 20px 0 rgba(255, 0, 0, 0.226);
+}
+
+
+
+.svgcolor{
+    filter: invert(100%) sepia(0%) saturate(25%) hue-rotate(70deg) brightness(108%) contrast(108%);
+}
+
+.active .btns{
+    background-color: #ff6961;
+    color:white;
+}
+
+.active img{
+    filter:invert(1);
+}
+
+
+.content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ced2cc;
+    padding: 90px;
+}
+
+.mainsection{
+    background-color:#F5F6FA;
+    flex-grow:1;
+}
+
+.shadow1{
+    box-shadow: 2px 2px 8px 0 rgba(202, 63, 63, 0.171), 0 6px 20px 0 rgba(255, 0, 0, 0.226);
+}
+
+#icon{
+    font-size:15px
+}
+
+
+.resContent{
+    padding:50px;
+    background-color: #fff;
+    margin: 20px;
+    height: 800px
+}
+
+.tableContainer{
+    overflow-y:auto;
+    max-height:600px;
+}
+.tableContainer::-webkit-scrollbar {
+    width: 12px;
+}
+
+.tableContainer::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: #e7e7e7;
+    border: 1px solid #cacaca;
+}
+
+.tableContainer::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+    background-color: #726e6e;
+}
+
+.table button{
+    border-radius: 15px;
+    width:70px;
+    color: #fff;
+    margin: 0 5px 0;
+    border-style: none;
+    font-weight: 500;
+    height:35px;
+}
+
+.table .btnEdit{
+    background-color: rgb(255, 72, 72);
+
+}
+.table .btnView{
+    background-color: rgb(35, 179, 30);
+
+}
+#myInput{
+    position:relative;
+    width:200px;
+    margin-left: auto;
+}
+
+.functions{
+    display:flex;
+}
+
+#pagination {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#pagination a {
+    margin: 0 5px;
+    padding: 5px 15px;
+    border: 1px solid #ddd;
+    color: #007bff;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#pagination a.active {
+    background-color: #007bff;
+    color: white;
+}
+
+#pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.select2-container .select2-selection--single {
+    height: 2.5em !important; 
+    font-size: 15px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 2.5em !important; 
+    padding-left: 0.5em !important; 
+    padding-right: 0.5em !important; 
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    right: 0.5em !important; 
+}

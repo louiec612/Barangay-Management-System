@@ -1,0 +1,66 @@
+.mainsection{
+  overflow: hidden;
+  display: flex;
+}
+
+.topStats{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  padding:15px;
+  background: rgba(254, 255, 91, 1.0); background: radial-gradient(at right top, rgba(254, 255, 91, 1.0), rgba(255, 47, 162, 1.0));
+  color: white;
+  min-height: 180px;
+  border-radius: 20px;
+  box-shadow: 0px 0.3px 0.3px hsl(228deg 10% 61% / 0.36),
+  0px 0.9px 1px -0.8px hsl(228deg 10% 61% / 0.36),
+  0.1px 2.2px 2.5px -1.7px hsl(228deg 10% 61% / 0.36),
+  0.2px 5.5px 6.2px -2.5px hsl(228deg 10% 61% / 0.36);;
+}
+
+.midStats{
+  display: flex;
+  justify-content: center;
+  background-color: #fff; 
+  min-height: 300px;
+  border-radius: 20px;
+  box-shadow: 0px 0.3px 0.3px hsl(228deg 10% 61% / 0.36),
+  0px 0.9px 1px -0.8px hsl(228deg 10% 61% / 0.36),
+  0.1px 2.2px 2.5px -1.7px hsl(228deg 10% 61% / 0.36),
+  0.2px 5.5px 6.2px -2.5px hsl(228deg 10% 61% / 0.36);;
+  
+}
+
+.botStats{
+  display: flex;
+  background-color: #fff; 
+  min-height: 250px;
+  border-radius: 20px;
+  box-shadow: 0px 0.3px 0.3px hsl(228deg 10% 61% / 0.36),
+  0px 0.9px 1px -0.8px hsl(228deg 10% 61% / 0.36),
+  0.1px 2.2px 2.5px -1.7px hsl(228deg 10% 61% / 0.36),
+  0.2px 5.5px 6.2px -2.5px hsl(228deg 10% 61% / 0.36);;
+}
+
+.topStats p{
+  font-size: 48px;
+  margin:0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#agePopulation{
+  max-width:700px;
+  max-height:290px;
+}
+
+#genderPopulation{
+  max-height:290px;
+} 
+
+.row{
+  padding: 10px 40px 10px 40px;
+}
