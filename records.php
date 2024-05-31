@@ -24,7 +24,7 @@
         <div class="gap"></div>
             <ul class="main">
                 <li>
-                    <a href="index.html" class="btns">
+                    <a href="index.php" class="btns">
                         <img src="ICONS\house.svg"width="20px"/>
                         Dashboard
                     </a>
@@ -51,7 +51,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="residentinfo.html"  class="btns">
+                    <a href="residentinfo.php"  class="btns">
                         <img src="ICONS\person-lines-fill.svg" width="20px"/>
                         Residents
                     </a>

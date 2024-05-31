@@ -1,3 +1,15 @@
+<?php
+require('connect.php');
+$population = mysqli_query($con,"SELECT * FROM resident_information");
+$popcount= mysqli_num_rows($population);
+
+$voters = mysqli_query($con,"SELECT * FROM resident_information WHERE voteRegister = 'Voter'");
+$votecount= mysqli_num_rows($voters);
+
+$transaction = mysqli_query($con,"SELECT * FROM transaction");
+$transcount= mysqli_num_rows($transaction);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +31,7 @@
     <div class="gap"></div>
         <ul class="main">
             <li class="active">
-                <a href="index.html" class="btns shadow1">
+                <a href="#" class="btns shadow1">
                     <img src="ICONS\house.svg" width="20px" class="svgcolor"/>
                     Dashboard
                 </a>
@@ -40,13 +52,13 @@
                 </ul>
             </li>
             <li>
-                <a href="records.html"  class="btns">
+                <a href="records.php"  class="btns">
                     <img src="ICONS\list-ol.svg" width="20px"/>
                     Transactions
                 </a>
             </li>
             <li>
-                <a href="residentinfo.html"  class="btns">
+                <a href="residentinfo.php"  class="btns">
                     <img src="ICONS\person-lines-fill.svg" width="20px"/>
                     Residents
                 </a>
@@ -72,19 +84,19 @@
             <div class="col-4">
                 <div class="topStats">
                     <label>Population</label>
-                    <p>1,200</p>
+                    <p><?php echo $popcount?></p>
                 </div>
             </div>
             <div class="col-4" >
                 <div class="topStats">
                     <label>Registered Voters</label>
-                    <p>1,200</p>
+                    <p><?php echo $votecount?></p>
                 </div>
             </div>
             <div class="col-4">
                 <div class="topStats">
                     <label>Transactions</label>
-                    <p>1,200</p>
+                    <p><?php echo $transcount?></p>
                 </div>
             </div>
         </div>
@@ -101,7 +113,7 @@
             </div>
         </div>
         <div class="row gx-3">
-            <div class="col-12">
+            <div class="col-8">
                 <div class="botStats">
                     <div class="container">
                         Recent Transactions
@@ -115,31 +127,63 @@
                                     <th>Action</th>
                                 </tr> 
                             </thead>
-                            <tbody>                            <tr>
+                            <tbody>                            
+                                <tr>
                                 <td>123</th>
                                 <td>Mark</td>
                                 <td>Otto</td>
                                 <td>@mdo</td>
                                 <td><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr></tbody>
+                                </tr>
+                                <tr>
+                                    <td>123</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                    <td><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
+                                </tr>
+                                <tr>
+                                    <td>123</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                    <td><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                     
                 </div>
+            </div>
+            <div class="col-4">
+
+                    <div class="container">
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <div class="botStats4" style="background: rgb(117,255,229);
+                                background: linear-gradient(40deg, rgba(117,255,229,1) 0%, rgba(213,255,160,1) 34%, rgba(244,255,109,1) 100%);">
+                                    
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="botStats4" style="background: rgb(255,177,117);
+                                background: linear-gradient(75deg, rgba(255,177,117,1) 0%, rgba(254,139,135,1) 34%);">
+                                    
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="botStats4">
+                                    
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="botStats4">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
             </div>
             
         </div>

@@ -126,7 +126,10 @@ document.addEventListener('DOMContentLoaded', function () {
               updateTableAndPagination();
           }
       });
-      pagination.appendChild(prev);
+      if(totalPages > 2){
+        pagination.appendChild(prev);
+      }
+      
 
       let startPage = Math.max(currentPage - 1, 1);
       let endPage = Math.min(startPage + 2, totalPages);
@@ -164,6 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
               updateTableAndPagination();
           }
       });
+      if(totalPages > 2)
       pagination.appendChild(next);
   }
 

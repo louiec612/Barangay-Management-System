@@ -1,3 +1,36 @@
+<?php
+require('connect.php');
+$result = mysqli_query($con,"SELECT * FROM resident_information");
+$rowcount= mysqli_num_rows($result);
+echo $rowcount;
+
+if(isset($_POST['submit']))
+{
+    $firstName=$_POST['firstName'];
+    $middleName = $_POST ['middleName'];
+    $lastName = $_POST ['lastName'];
+    $gender =$_POST['gender'];
+    $civilStatus = $_POST['civilStatus'];
+    $birthday = $_POST['date'];
+    $contactNumber = $_POST['contactNumber'];
+    $purok = $_POST['purok'];
+    $street = $_POST['street'];
+    $houseNumber = $_POST['houseNumber'];
+    $voteRegister = $_POST['voteRegister'];
+    $sql = "INSERT INTO resident_information (firstName, middleName, lastName, gender, civilStatus, birthday, contactNumber, purok, street, houseNumber,voteRegister)
+    VALUES ('$firstName', '$middleName', '$lastName', '$gender', '$civilStatus', '$birthday', '$contactNumber', '$purok', '$street', '$houseNumber','$voteRegister')";
+   
+    
+    mysqli_query($con, $sql);
+    echo
+    "
+    <script>alert('Data is inserted successfully');</script>
+    ";
+}
+
+$query = "SELECT *, CONCAT(firstName, ' ', lastName) AS FIRSTNAME FROM resident_information";
+$result = mysqli_query($con, $query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,13 +43,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet"/>
+
+    
 <body onload="checkDropdown();">
     <div class="sidebar shadow">
         <div style="font-weight: 800; text-align: center; margin-top: 60px;">Bilis-Barangay Management System</div>
         <div class="gap"></div>
             <ul class="main">
                 <li>
-                    <a href="index.html" class="btns">
+                    <a href="index.php" class="btns">
                         <img src="ICONS\house.svg"width="20px"/>
                         Dashboard
                     </a>
@@ -37,13 +72,13 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="records.html"  class="btns">
+                    <a href="records.php"  class="btns">
                         <img src="ICONS\list-ol.svg" width="20px"/>
                         Transactions
                     </a>
                 </li>
                 <li class="active">
-                    <a href="residentinfo.html"  class="btns shadow1">
+                    <a href="#"  class="btns shadow1">
                         <img src="ICONS\person-lines-fill.svg" width="20px"/>
                         Residents
                     </a>
@@ -84,106 +119,25 @@
                         </thead>
                         <tbody id="myTable">
                             <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
+                                <?php
+                                    
+                                    while($row = mysqli_fetch_assoc($result))
+                                    {
+                                        ?>
+                                        <td><?php echo $row['residentNo'] ?></td>
+                                        <td><?php echo $row['FIRSTNAME'] ?></td>
+                                        <td><?php echo $row['gender'] ?></td>
+                                        <td><?php echo $row['birthday'] ?></td>
+                                        <td class="text-center"><button class="btnView" data-bs-toggle="modal" data-bs-target="#bgyCertificate">View</button><button class="btnEdit">Edit</button></td>
                             </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@odo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
+                                    <?php
+                                    }
+                                ?> 
                         </tbody>
                     </table>
-                    <div id="pagination"></div>
+                    
+                        <div id="pagination"></div>
+                      
             </div>
             
             
@@ -273,7 +227,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body d-inline-flex align-items-start">
-                <form>
+                <form action="residentinfo.php" method="post">
                     <div class="row g-3 align-items-center">
                         <div class="col-auto">
                             <input type="text" placeholder="First Name" class="form-control" name="firstName">
@@ -287,14 +241,14 @@
                     </div>
                     <div class="row g-3 align-items-center">
                         <div class="col-auto">
-                            <select class="form-control" id="gender" style="width: 106px;">
+                            <select class="form-control" id="gender" style="width: 106px;" name="gender">
                                 <option value="" selected></option>
                                 <option>Male</option>
                                 <option>Female</option>
                             </select>
                         </div>   
                         <div class="col-auto">
-                            <select class="form-control" id="civilStatus" style="width: 156px;">
+                            <select class="form-control" id="civilStatus" style="width: 156px;" name="civilStatus">
                                 <option value="" selected></option>
                                 <option>Single</option>
                                 <option>Married</option>
@@ -303,28 +257,56 @@
                             </select>
                         </div>
                         <div class="col-auto">
-                            <input type="date" class="form-control">
+                            <input type="date" class="form-control" name="date">
                         </div>
                         <div class="col-auto" style="width: 190px;">
-                            <input type="text" class="form-control" placeholder="Contact Number">
+                            <input type="text" class="form-control" placeholder="Contact Number" name="contactNumber">
                         </div>
                     </div>
-                    
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <input type="text" placeholder="Purok" class="form-control" name="purok">
+                        </div>  
+                        <div class="col-auto">
+                            <input type="text" placeholder="House Number" class="form-control" name="houseNumber">
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" placeholder="Street" class="form-control" name="street">
+                        </div>
+                    </div>
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                        <select class="form-control" id="voteRegister" style="width: 156px;" name="voteRegister">
+                                <option value="" selected></option>
+                                <option>Voter</option>
+                                <option>Non-voter</option>
+                            </select>
+                        </div>  
+                        <div class="col-auto">
+                            <input type="text" class="form-control" >
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" placeholder="Street" class="form-control">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" name="submit" class="btn" style="background-color: #ff6961; color:white;">Add Resident</button>
+                    </div>
                 </form>
-                <div class="col-auto"  style="width: 206px;">
+                <div class="col-auto" style="width: 206px;">
                     <div class="col-auto">
                         <img id="img" class="object-fit-contain"></img>
                     </div>
                     <div class="col-auto">
-                        <input id="input" onchange=file_changed() type="file" class="form-control form-control-sm">
+                        <input id="input" type="file" class="form-control form-control-sm" accept="image/*" onchange="file_changed()" >
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn" style="background-color: #ff6961; color:white;">Add Resident</button>
+                
+                
             </div>
-          </div>
+            
         </div>
     </div>
 </div>
@@ -351,6 +333,7 @@
             minimumResultsForSearch: Infinity
         });
     });
+
     </script>
 </body>
 </html>

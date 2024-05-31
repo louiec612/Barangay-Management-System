@@ -1,5 +1,5 @@
 .row{
-    padding: 10px 40px 10px 40px;
+    padding: 20px 40px;
 }
 
 #img{
@@ -11,3 +11,7 @@
     margin-bottom: 20px;
 }
 
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}

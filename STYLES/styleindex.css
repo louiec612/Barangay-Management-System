@@ -9,7 +9,8 @@
   align-items: flex-start;
   position: relative;
   padding:15px;
-  background: rgba(254, 255, 91, 1.0); background: radial-gradient(at right top, rgba(254, 255, 91, 1.0), rgba(255, 47, 162, 1.0));
+  background: rgb(255,109,136);
+background: linear-gradient(289deg, rgba(255,109,136,1) 5%, rgba(255,153,139,1) 44%);
   color: white;
   min-height: 180px;
   border-radius: 20px;
@@ -33,9 +34,21 @@
 }
 
 .botStats{
-  display: flex;
+  display:flex;
   background-color: #fff; 
   min-height: 250px;
+  border-radius: 20px;
+  box-shadow: 0px 0.3px 0.3px hsl(228deg 10% 61% / 0.36),
+  0px 0.9px 1px -0.8px hsl(228deg 10% 61% / 0.36),
+  0.1px 2.2px 2.5px -1.7px hsl(228deg 10% 61% / 0.36),
+  0.2px 5.5px 6.2px -2.5px hsl(228deg 10% 61% / 0.36);;
+}
+
+.botStats4{
+  display:flex;
+  background-color: #fff; 
+  min-height: 110px;
+  min-width: 110px;
   border-radius: 20px;
   box-shadow: 0px 0.3px 0.3px hsl(228deg 10% 61% / 0.36),
   0px 0.9px 1px -0.8px hsl(228deg 10% 61% / 0.36),
@@ -62,5 +75,9 @@
 } 
 
 .row{
-  padding: 10px 40px 10px 40px;
+  padding: 10px 20px;
+}
+
+.row1{
+  padding: 10px 10px;
 }
