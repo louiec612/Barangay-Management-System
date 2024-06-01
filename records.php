@@ -1,3 +1,9 @@
+<?php
+require('connect.php');
+
+$query = "SELECT *, CONCAT(firstName, ' ', lastName) AS FIRSTNAME FROM resident_information";
+$result = mysqli_query($con, $query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +85,7 @@
             <br>
             
             <div class="tableContainer">
-                    <table id="example"class="table table-hover">
+                    <table id="example"class="table table-hover table-bordered">
                         <thead class="table-dark" style="position: sticky; top: 0%;z-index: 1000">
                             <tr>
                                 <th>Transaction No.</th>
@@ -90,104 +96,21 @@
                             </tr>
                         </thead>
                         <tbody id="myTable">
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView" data-bs-toggle="modal" data-bs-target="#bgyCertificate">View</button><button class="btnEdit">Edit</button></td>
+                        <tr>
+                                <?php
+                                    
+                                    while($row = mysqli_fetch_assoc($result))
+                                    {
+                                        ?>
+                                        <td><?php echo $row['residentNo'] ?></td>
+                                        <td><?php echo $row['FIRSTNAME'] ?></td>
+                                        <td><?php echo $row['gender'] ?></td>
+                                        <td><?php echo $row['contactNumber'] ?></td>
+                                        <td class="text-center"><button class="btnView" data-bs-toggle="modal" data-bs-target="#bgyCertificate">View</button><button class="btnEdit">Edit</button></td>
                             </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@odo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>123</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center"><button class="btnView">View</button><button class="btnEdit">Edit</button></td>
-                            </tr>
+                                    <?php
+                                    }
+                                ?> 
                         </tbody>
                     </table>
                     <div id="pagination"></div>

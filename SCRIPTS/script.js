@@ -1,4 +1,17 @@
+async function fetchGenderData() {
+  try {
+      const response = await fetch('http://localhost:3000/get-genders');
+      if (!response.ok) {
+          throw new Error('Network response was not ok' + response.statusText);
+      }
+      const value = await response.json();
+      console.log(value); // Log the result to the console for debugging
 
+      loadTables(value);
+  } catch (error) {
+      console.error('Error fetching data:', error);
+  }
+}
 
 function showDocuments(){
     var dropdown = document.getElementById('dropdown_menu')
@@ -25,11 +38,11 @@ function checkDropdown() {
         icon.classList.remove('bi-caret-up-fill');
         icon.classList.add('bi-caret-down-fill');
     }
-    
 
 }
 
-function loadTables(){
+function loadTables(){  
+  
     const ctx = document.getElementById('agePopulation');
     new Chart(ctx, {
         type: 'bar',
@@ -57,17 +70,24 @@ function loadTables(){
             }
         }
       });
-
+      const div = document.getElementById("dom-target-male");
+      const male = div.textContent;
+      const div2 = document.getElementById("dom-target-female");
+      const female = div2.textContent;
+      const label1 = "Male"
+      const result1 = label1.concat(male);
+      const label2 = "Female"
+      const result2 = label2.concat(female);
     const gPop = document.getElementById('genderPopulation');
     new Chart(gPop, {
         type: 'doughnut',
         data:{
          
           datasets: [{
-            data: [253, 193],
+            data: [male, female],
             borderWidth: 1
           }]
-          , labels: ['Male', 'Female'],
+          , labels: [result1, result2],
         },
         options: {
           responsive: true,
@@ -94,7 +114,7 @@ $(document).ready(function(){
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-  const rowsPerPage = 8;
+  const rowsPerPage = 10;
   let currentPage = 1;
   const table = document.getElementById('example');
   const tableBody = table.querySelector('tbody');
@@ -102,13 +122,18 @@ document.addEventListener('DOMContentLoaded', function () {
   const totalPages = Math.ceil(rows.length / rowsPerPage);
 
   function displayTableData(page) {
-      const startIndex = (page - 1) * rowsPerPage;
-      const endIndex = startIndex + rowsPerPage;
-
-      rows.forEach((row, index) => {
-          row.style.display = index >= startIndex && index < endIndex ? '' : 'none';
-      });
-  }
+    const startIndex = (page - 1) * rowsPerPage;
+    const endIndex = startIndex + rowsPerPage;
+    
+    // Loop through rows and set display style based on index
+    rows.forEach((row, index) => {
+        if (index >= startIndex && index < endIndex) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
 
   function displayPagination() {
       const pagination = document.getElementById('pagination');

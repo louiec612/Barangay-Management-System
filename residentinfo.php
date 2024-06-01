@@ -2,31 +2,7 @@
 require('connect.php');
 $result = mysqli_query($con,"SELECT * FROM resident_information");
 $rowcount= mysqli_num_rows($result);
-echo $rowcount;
 
-if(isset($_POST['submit']))
-{
-    $firstName=$_POST['firstName'];
-    $middleName = $_POST ['middleName'];
-    $lastName = $_POST ['lastName'];
-    $gender =$_POST['gender'];
-    $civilStatus = $_POST['civilStatus'];
-    $birthday = $_POST['date'];
-    $contactNumber = $_POST['contactNumber'];
-    $purok = $_POST['purok'];
-    $street = $_POST['street'];
-    $houseNumber = $_POST['houseNumber'];
-    $voteRegister = $_POST['voteRegister'];
-    $sql = "INSERT INTO resident_information (firstName, middleName, lastName, gender, civilStatus, birthday, contactNumber, purok, street, houseNumber,voteRegister)
-    VALUES ('$firstName', '$middleName', '$lastName', '$gender', '$civilStatus', '$birthday', '$contactNumber', '$purok', '$street', '$houseNumber','$voteRegister')";
-   
-    
-    mysqli_query($con, $sql);
-    echo
-    "
-    <script>alert('Data is inserted successfully');</script>
-    ";
-}
 
 $query = "SELECT *, CONCAT(firstName, ' ', lastName) AS FIRSTNAME FROM resident_information";
 $result = mysqli_query($con, $query);
@@ -107,13 +83,13 @@ $result = mysqli_query($con, $query);
             <br>
             
             <div class="tableContainer">
-                    <table id="example"class="table table-hover">
-                        <thead class="table-dark" style="position: sticky; top: 0%;z-index: 1000">
+                    <table id="example"class="table table-hover table-bordered">
+                        <thead class="table table-dark" style="position: sticky; top: 0%;z-index: 1000">
                             <tr>
                                 <th>Resident No.</th>
                                 <th>Name</th>
                                 <th>Age</th>
-                                <th>Address</th>
+                                <th>Contact No.</th>
                                 <th class="text-center" style="width:200px">Action</th>
                             </tr>
                         </thead>
@@ -127,7 +103,7 @@ $result = mysqli_query($con, $query);
                                         <td><?php echo $row['residentNo'] ?></td>
                                         <td><?php echo $row['FIRSTNAME'] ?></td>
                                         <td><?php echo $row['gender'] ?></td>
-                                        <td><?php echo $row['birthday'] ?></td>
+                                        <td><?php echo $row['contactNumber'] ?></td>
                                         <td class="text-center"><button class="btnView" data-bs-toggle="modal" data-bs-target="#bgyCertificate">View</button><button class="btnEdit">Edit</button></td>
                             </tr>
                                     <?php
@@ -220,91 +196,85 @@ $result = mysqli_query($con, $query);
     </div>
     <!-- ADD RESIDENT -->
     <div class="modal fade " id="addResident" aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog" data-bs-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered" style="min-width:1000px;">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Add Resident</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body d-inline-flex align-items-start">
-                <form action="residentinfo.php" method="post">
-                    <div class="row g-3 align-items-center">
-                        <div class="col-auto">
-                            <input type="text" placeholder="First Name" class="form-control" name="firstName">
-                        </div>  
-                        <div class="col-auto">
-                            <input type="text" placeholder="Middle Name" class="form-control" name="middleName">
-                        </div>
-                        <div class="col-auto">
-                            <input type="text" placeholder="Last Name" class="form-control" name="lastName">
-                        </div>
-                    </div>
-                    <div class="row g-3 align-items-center">
-                        <div class="col-auto">
-                            <select class="form-control" id="gender" style="width: 106px;" name="gender">
-                                <option value="" selected></option>
-                                <option>Male</option>
-                                <option>Female</option>
-                            </select>
-                        </div>   
-                        <div class="col-auto">
-                            <select class="form-control" id="civilStatus" style="width: 156px;" name="civilStatus">
-                                <option value="" selected></option>
-                                <option>Single</option>
-                                <option>Married</option>
-                                <option>Widow</option>
-                                <option>Seperated</option>
-                            </select>
-                        </div>
-                        <div class="col-auto">
-                            <input type="date" class="form-control" name="date">
-                        </div>
-                        <div class="col-auto" style="width: 190px;">
-                            <input type="text" class="form-control" placeholder="Contact Number" name="contactNumber">
-                        </div>
-                    </div>
-                    <div class="row g-3 align-items-center">
-                        <div class="col-auto">
-                            <input type="text" placeholder="Purok" class="form-control" name="purok">
-                        </div>  
-                        <div class="col-auto">
-                            <input type="text" placeholder="House Number" class="form-control" name="houseNumber">
-                        </div>
-                        <div class="col-auto">
-                            <input type="text" placeholder="Street" class="form-control" name="street">
-                        </div>
-                    </div>
-                    <div class="row g-3 align-items-center">
-                        <div class="col-auto">
-                        <select class="form-control" id="voteRegister" style="width: 156px;" name="voteRegister">
-                                <option value="" selected></option>
-                                <option>Voter</option>
-                                <option>Non-voter</option>
-                            </select>
-                        </div>  
-                        <div class="col-auto">
-                            <input type="text" class="form-control" >
-                        </div>
-                        <div class="col-auto">
-                            <input type="text" placeholder="Street" class="form-control">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" name="submit" class="btn" style="background-color: #ff6961; color:white;">Add Resident</button>
-                    </div>
-                </form>
-                <div class="col-auto" style="width: 206px;">
-                    <div class="col-auto">
-                        <img id="img" class="object-fit-contain"></img>
-                    </div>
-                    <div class="col-auto">
-                        <input id="input" type="file" class="form-control form-control-sm" accept="image/*" onchange="file_changed()" >
-                    </div>
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Resident</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-            </div>
-                
-                
+                <div class="modal-body d-flex justify-content-center">
+                    <form action="residentinfo.php" method="post">
+                                        
+                        <div class="row align-items-center m-0">
+                            <div class="justify-content-center">
+                                <img id="img" class="object-fit-contain"></img>
+                                <input id="input" type="file" class="form-control form-control-sm" accept="image/*" onchange="file_changed()" style="width:300px;margin:auto;" >
+                            </div> 
+                        </div>
+                    
+                        <div class="row align-items-center">
+                            <div class="col-auto">                                    
+                                    <input type="text" id="firstname" placeholder="First Name" class="form-control" name="firstName">                                
+                            </div>  
+                            <div class="col-auto">
+                                <input type="text" id="middlename" placeholder="Middle Name" class="form-control" name="middleName">                              
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="lastname" placeholder="Last Name" class="form-control" name="lastName">
+                            </div>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                    <select class="form-control" id="gender" style="width: 106px;" name="gender">
+                                            <option value="" selected></option>
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                    </select>
+                                
+                            </div>   
+                            <div class="col-auto">
+                                <select class="form-control" id="civilStatus" style="width: 156px;" name="civilStatus">
+                                    <option value="" selected></option>
+                                    <option>Single</option>
+                                    <option>Married</option>
+                                    <option>Widow</option>
+                                    <option>Seperated</option>
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <input type="date" id="date" class="form-control" name="date">
+                            </div>
+                            <div class="col-auto" style="width: 190px;">
+                                <input type="text" class="form-control" placeholder="Contact Number" name="contactNumber">
+                            </div>
+                        </div>
+                        <div class="row align-items-center">
+                        <div class="col-auto">
+                                <input type="text" placeholder="Citizenship" class="form-control" name="citizenship">
+                            </div> 
+                            <div class="col-auto">
+                                <input type="text" placeholder="Precinct No." class="form-control" name="precinct">
+                            </div>  
+                            <div class="col-auto">
+                            <select class="form-control" id="voteRegister" style="width: 206px;" name="voteRegister">
+                                    <option value="" selected></option>
+                                    <option>Voter</option>
+                                    <option>Non-voter</option>
+                                </select>
+                            </div>  
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-auto w-100">
+                                <textarea placeholder="Address" class="form-control" name="address" rows="2"></textarea>
+                            </div> 
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" name="submit" class="btn" style="background-color: #ff6961; color:white;">Add Resident</button>
+                        </div>   
+                    </form>
+                </div>
             </div>
             
         </div>
@@ -317,23 +287,25 @@ $result = mysqli_query($con, $query);
 <script src="SCRIPTS/script.js"></script>
   <script>
     $(document).ready(function() {
-        var res = document.getElementById('gender')
-        $(res).select2({
+        var gender = document.getElementById('gender')
+        $(gender).select2({
             placeholder: "Gender",
             dropdownParent: $('#addResident'),
             minimumResultsForSearch: Infinity
         });
-    });
-
-    $(document).ready(function() {
-        var res = document.getElementById('civilStatus')
-        $(res).select2({
+        var voteRegister = document.getElementById('voteRegister')
+        $(voteRegister).select2({
+            placeholder: "Voting Status",
+            dropdownParent: $('#addResident'),
+            minimumResultsForSearch: Infinity
+        });
+        var civilStatus = document.getElementById('civilStatus')
+        $(civilStatus).select2({
             placeholder: "Civil Status",
             dropdownParent: $('#addResident'),
             minimumResultsForSearch: Infinity
         });
     });
-
     </script>
 </body>
 </html>

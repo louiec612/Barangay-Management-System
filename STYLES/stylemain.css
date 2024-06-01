@@ -175,16 +175,15 @@ a:hover, a:visited, a:link, a:active
 .table button{
     border-radius: 15px;
     width:70px;
-    color: #070707;
+    color: #fff;
     margin: 0 5px 0;
     border-style: none;
     font-weight: 500;
-    height:50px;
+    height:30px;
 }
 
 .table .btnEdit{
     background-color: rgb(255, 72, 72);
-
 }
 .table .btnView{
     background-color: rgb(35, 179, 30);
@@ -242,4 +241,12 @@ a:hover, a:visited, a:link, a:active
     align-items: center !important;
     justify-content: center !important;
     right: 0.5em !important; 
+}
+#img{
+    display:flex;
+    align-items: center;
+    width:100px;
+    height:100px;
+    margin:auto;
+    margin-bottom: 20px;
 }

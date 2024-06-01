@@ -1,17 +1,11 @@
 .row{
-    padding: 20px 40px;
-}
-
-#img{
-    display:flex;
-    align-items: center;
-    width:100px;
-    height:100px;
-    margin:auto;
-    margin-bottom: 20px;
+    padding: 10px 30px;
 }
 
 .disabled {
     pointer-events: none;
     opacity: 0.5;
 }
+
+
+

@@ -10,7 +10,7 @@
   position: relative;
   padding:15px;
   background: rgb(255,109,136);
-background: linear-gradient(289deg, rgba(255,109,136,1) 5%, rgba(255,153,139,1) 44%);
+  background: linear-gradient(289deg, rgba(255,109,136,1) 5%, rgba(255,153,139,1) 44%);
   color: white;
   min-height: 180px;
   border-radius: 20px;
@@ -30,13 +30,16 @@ background: linear-gradient(289deg, rgba(255,109,136,1) 5%, rgba(255,153,139,1) 
   0px 0.9px 1px -0.8px hsl(228deg 10% 61% / 0.36),
   0.1px 2.2px 2.5px -1.7px hsl(228deg 10% 61% / 0.36),
   0.2px 5.5px 6.2px -2.5px hsl(228deg 10% 61% / 0.36);;
-  
 }
 
 .botStats{
-  display:flex;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  padding:15px;
   background-color: #fff; 
-  min-height: 250px;
+  min-height: 180px;
   border-radius: 20px;
   box-shadow: 0px 0.3px 0.3px hsl(228deg 10% 61% / 0.36),
   0px 0.9px 1px -0.8px hsl(228deg 10% 61% / 0.36),
@@ -50,6 +53,8 @@ background: linear-gradient(289deg, rgba(255,109,136,1) 5%, rgba(255,153,139,1) 
   min-height: 110px;
   min-width: 110px;
   border-radius: 20px;
+  margin: 0;
+  padding: 0;
   box-shadow: 0px 0.3px 0.3px hsl(228deg 10% 61% / 0.36),
   0px 0.9px 1px -0.8px hsl(228deg 10% 61% / 0.36),
   0.1px 2.2px 2.5px -1.7px hsl(228deg 10% 61% / 0.36),
@@ -80,4 +85,13 @@ background: linear-gradient(289deg, rgba(255,109,136,1) 5%, rgba(255,153,139,1) 
 
 .row1{
   padding: 10px 10px;
+}
+
+.img{
+  display:flex;
+  align-items: center;
+  width:100px;
+  height:100px;
+  margin:auto;
+  margin-bottom: 20px;
 }
